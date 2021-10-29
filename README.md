@@ -1,2 +1,4 @@
-# hackathon-sartor
-Esse repositório contem uma aplicação CRUD para avaliação por Competências no Processo Seletivo Interno – PSI 12084 na GN Suporte ao Negócio – GESUN.
+# Orientações
+1 - Clone o repositório 
+2 - Instale os pacotes necessários (npm start)
+3 - ...
