@@ -1,4 +1,4 @@
 # Orientações
-### - Clone o repositório 
-### - Instale os pacotes necessários (npm start)
-### - ...
+### 1 - Clone o repositório 
+### 2 - Instale os pacotes necessários (npm start)
+### 3 - ...
