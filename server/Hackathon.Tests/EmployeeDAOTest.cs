@@ -3,7 +3,7 @@ using Hackthon.SQLServer;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 
-namespace Hackathon.Tests.DAOSqlServer
+namespace Hackathon.Tests
 {
     [TestClass]
     public class EmployeeDAOTest
