@@ -11,6 +11,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { NgxBootstrapIconsModule, allIcons } from 'ngx-bootstrap-icons';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 
 
 @NgModule({
@@ -25,6 +26,7 @@ import { NgxBootstrapIconsModule, allIcons } from 'ngx-bootstrap-icons';
     FormsModule,
     ReactiveFormsModule,
     BsDropdownModule.forRoot(),
+    BsDatepickerModule.forRoot(),
     BrowserAnimationsModule,
     NgxBootstrapIconsModule.pick(allIcons)
   ],

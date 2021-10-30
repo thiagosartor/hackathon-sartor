@@ -2,16 +2,17 @@ import { Employee } from './Employee';
 import { Component, OnInit } from '@angular/core';
 import { EmployeeService } from 'src/app/employees/Employee.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { DatePipe } from '@angular/common';
 
 
 @Component({
   selector: 'app-employees',
   templateUrl: './employees.component.html',
-  styleUrls: ['./employees.component.css']
+  styleUrls: ['./employees.component.css'],
+  providers: [ DatePipe ]
 })
 export class EmployeesComponent implements OnInit {
-
-  constructor(private service: EmployeeService, private fb: FormBuilder) {
+  constructor(private service: EmployeeService, private fb: FormBuilder, private datePipe: DatePipe) {
     this.createForm();
   }
 
@@ -19,7 +20,8 @@ export class EmployeesComponent implements OnInit {
   public EmployeeList: any = [];
   public ModalTitle!: string;
   public AtivateAddEditEmployeeComp: boolean = false;
-  public newOff!: Employee;
+  public newEmp!: Employee;
+  public empSelect!: Employee
   public EmployeeSelected: any;
   public Add = false;
 
@@ -31,34 +33,43 @@ export class EmployeesComponent implements OnInit {
   createForm(){
     this.EmployeeForm = this.fb.group({
       name:['', Validators.required],
-      code: ['', Validators.required],
-      city: ['', Validators.required]
+      cpf: ['', Validators.required],
+      birth: ['', Validators.required],
+      phone: ['', Validators.required]
     });
   }
 
   addOrUpdateEmployee() {
     if (this.EmployeeForm.valid) {
       if (this.Add) {
-        this.newOff = {id: 0, ...this.EmployeeForm.value};
-        this.service.addEmployee(this.newOff)
+        this.newEmp = {
+          id: 0,
+          cpf:this.EmployeeForm.value.cpf,
+          name: this.EmployeeForm.value.name,
+          birth: (new Date(this.EmployeeForm.value.birth)),
+          phone: this.EmployeeForm.value.phone
+         };
+        this.service.addEmployee(this.newEmp)
         .subscribe(
           () => {
             this.refreshEmployeeList();
-            console.log('Agencia salva com sucesso!');
           }, (error: any) => {
-            console.log(`Erro: Agencia não pode ser salva!`);
             console.error(error);
           }
         );
       } else {
-        this.newOff = {id: this.EmployeeSelected.id, ...this.EmployeeForm.value};
-        this.service.updateEmployee(this.newOff)
+        this.empSelect = {
+          id: this.EmployeeSelected.id,
+          cpf:this.EmployeeForm.value.cpf,
+          name: this.EmployeeForm.value.name,
+          birth: (new Date(this.EmployeeForm.value.birth)),
+          phone: this.EmployeeForm.value.phone
+         };
+        this.service.updateEmployee(this.empSelect)
         .subscribe(
           () => {
             this.refreshEmployeeList();
-            console.log('Agencia salva com sucesso!');
           }, (error: any) => {
-            console.log(`Erro: Agencia não pode ser salva!`);
             console.error(error);
           }
         );
@@ -69,6 +80,7 @@ export class EmployeesComponent implements OnInit {
 
   newEmployee() {
     this.createForm();
+
     this.Add = true;
   }
 
@@ -78,9 +90,7 @@ export class EmployeesComponent implements OnInit {
       this.service.deleteEmployee(id).subscribe(
         () => {
           this.refreshEmployeeList();
-          console.log('Agencia excluida com sucesso!');
         }, (error: any) => {
-          console.log(`Erro: Agencia não pode ser excluida!`);
           console.error(error);
         }
       );
