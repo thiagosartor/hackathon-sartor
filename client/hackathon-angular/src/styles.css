@@ -1,3 +1,8 @@
 @import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 @import '../node_modules/ngx-bootstrap/datepicker/bs-datepicker.css';
 
+.btn-primary-spacing
+{
+  margin-right: 5px;
+  margin-bottom: 5px !important;
+}

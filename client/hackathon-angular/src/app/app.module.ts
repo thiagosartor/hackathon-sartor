@@ -1,3 +1,4 @@
+import { ListEmployeeComponent } from './employees/list-employee/list-employee.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -12,12 +13,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { NgxBootstrapIconsModule, allIcons } from 'ngx-bootstrap-icons';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { TopmenuComponent } from './topmenu/topmenu.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    EmployeesComponent
+    EmployeesComponent,
+    ListEmployeeComponent,
+      TopmenuComponent
    ],
   imports: [
     BrowserModule,
