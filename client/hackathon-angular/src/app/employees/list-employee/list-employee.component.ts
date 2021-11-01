@@ -38,10 +38,10 @@ export class ListEmployeeComponent implements OnInit {
 
   createForm(){
     this.EmployeeForm = this.fb.group({
-      name: ['', Validators.required],
-      cpf: ['', Validators.required],
+      name:['', Validators.required],
+      cpf: ['', Validators.maxLength(14)],
       birth: ['', Validators.required],
-      phone: ['', Validators.required],
+      phone: ['', Validators.maxLength(15)]
     });
   }
 
@@ -92,6 +92,8 @@ export class ListEmployeeComponent implements OnInit {
   }
 
   refreshEmployeeList(){
+    this.back();
+
     this.service.getEmployeeList().subscribe(data =>{
       this.EmployeeList = data;
     });

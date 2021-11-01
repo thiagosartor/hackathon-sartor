@@ -7,7 +7,7 @@ import { AddEmployeeComponent } from './add-employee.component';
 
 describe('AddEmployeeComponent', () => {
   let component: import { AddEmployeeComponent } from './add-employee.component';
-;
+
   let fixture: ComponentFixture<AddEmployeeComponent>;
 
   beforeEach(async(() => {

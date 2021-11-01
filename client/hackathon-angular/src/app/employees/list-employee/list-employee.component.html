@@ -1,14 +1,8 @@
 <div class="row">
   <div class="col-sm-6" *ngIf="EmployeeSelected">
     <div class="row">
-      <div class="mr-auto">
+      <div class="">
         <h2 class="title">Editar Funcionário: {{EmployeeSelected.id}} </h2>
-      </div>
-      <div class="mt-1">
-        <button class="btn btn-sm btn-warning" (click)="back()"> Voltar
-          <i-bs name="arrow-90deg-left" width="20" height="20">
-          </i-bs>
-        </button>
       </div>
     </div>
 
@@ -54,7 +48,16 @@
           width="20"
             height="20">
           </i-bs>
-          Salvar</button>
+            Salvar
+        </button>
+
+        <button class="btn btn-warning btn-primary-spacing" (click)="back()" >
+          <i-bs name="arrow-90deg-left"
+          width="20"
+            height="20">
+          </i-bs>
+            Voltar
+        </button>
       </div>
     </form>
 
@@ -73,20 +76,25 @@
           <th scope="col">Visualizar</th>
           <th scope="col">#</th>
           <th scope="col">Nome</th>
+          <th [hidden]="EmployeeSelected" scope="col">CPF</th>
+          <th [hidden]="EmployeeSelected" scope="col">Data Nascimento</th>
+          <th [hidden]="EmployeeSelected" scope="col">Telefone</th>
           <th scope="col">Ações</th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let dataItem of EmployeeList" >
         <td>
-          <button (click)="employeeSelect(dataItem)" class="btn btn-sm btn-light"tooltip="Detalhes">
+          <button (click)="employeeSelect(dataItem)" class="btn btn-sm btn-light" tooltip="Detalhes">
            <i-bs name="eye" width="20" height="20">
-
            </i-bs>
           </button>
         </td>
         <td scope="row">{{dataItem.id}}</td>
         <td>{{dataItem.name}}</td>
+        <td [hidden]="EmployeeSelected">{{dataItem.cpf}}</td>
+        <td [hidden]="EmployeeSelected">{{dataItem.birth | DateTimeFormatPipe}}</td>
+        <td [hidden]="EmployeeSelected">{{dataItem.phone}}</td>
         <td>
           <div class="btn-group">
 

@@ -5,6 +5,12 @@ body {
   font-size: .875rem;
 }
 
+.btn-primary-spacing
+{
+  margin-right: 10px;
+  margin-bottom: 10px !important;
+}
+
 /*
  * Sidebar
  */
