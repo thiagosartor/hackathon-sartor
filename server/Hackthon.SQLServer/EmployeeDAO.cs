@@ -148,11 +148,11 @@ namespace Hackthon.SQLServer
                         while (reader.Read())
                         {
                             Employee employeeSelected = new Employee();
-                            employeeSelected.Id = int.Parse(reader["Id_Employee"].ToString());
-                            employeeSelected.Name = reader["Name"].ToString();
-                            employeeSelected.CPF = reader["Cpf"].ToString();
-                            employeeSelected.Phone = reader["Phone"].ToString();
-                            employeeSelected.Birth = DateTime.Parse(reader["Birth"].ToString());
+                            employeeSelected.Id = int.Parse(reader["Id_Employee"].ToString().Trim());
+                            employeeSelected.Name = reader["Name"].ToString().Trim();
+                            employeeSelected.CPF = reader["Cpf"].ToString().Trim();
+                            employeeSelected.Phone = reader["Phone"].ToString().Trim();
+                            employeeSelected.Birth = DateTime.Parse(reader["Birth"].ToString().Trim());
 
                             listEmployees.Add(employeeSelected);
                         }
@@ -189,11 +189,11 @@ namespace Hackthon.SQLServer
 
                     while (reader.Read())
                     {
-                        employeeSelected.Id = int.Parse(reader["Id_Employee"].ToString());
-                        employeeSelected.Name = reader["Name"].ToString();
-                        employeeSelected.CPF = reader["Cpf"].ToString();
-                        employeeSelected.Phone = reader["Phone"].ToString();
-                        employeeSelected.Birth = DateTime.Parse(reader["Birth"].ToString());
+                        employeeSelected.Id = int.Parse(reader["Id_Employee"].ToString().Trim());
+                        employeeSelected.Name = reader["Name"].ToString().Trim();
+                        employeeSelected.CPF = reader["Cpf"].ToString().Trim();
+                        employeeSelected.Phone = reader["Phone"].ToString().Trim();
+                        employeeSelected.Birth = DateTime.Parse(reader["Birth"].ToString().Trim());
                     }
                 }
             }

@@ -6,7 +6,8 @@
 <form [formGroup]="EmployeeForm" (submit)="addEmployee()">
   <div class="form-group">
     <label for="formGroupExampleInput" class="form-label">Nome</label>
-    <input type="text" [ngClass]="{'is-invalid': !EmployeeForm.valid }" class="form-control" formControlName="name" placeholder="Digite um nome">
+    <input type="text" [ngClass]="{'is-invalid': !EmployeeForm.valid }" class="form-control"
+    formControlName="name" placeholder="Digite um nome">
     <div class="div invalid-feedback">
       O campo nome é obrigatório.
     </div>
@@ -14,9 +15,9 @@
   <div class="form-group">
     <label for="formGroupExampleInput" class="form-label">CPF</label>
     <input type="text" formControlName="cpf" class="form-control"
-    [ngClass]="{'is-invalid': !EmployeeForm.valid }">
+    [ngClass]="{'is-invalid': !EmployeeForm.valid }" placeholder="Digite um CPF">
     <div class="div invalid-feedback">
-      O campo CPF é obrigatório.
+      O campo CPF é obrigatório. Ex: 000.000.000-00
     </div>
   </div>
   <div class="form-group">
@@ -24,7 +25,7 @@
     <input  type="text" class="form-control" [ngClass]="{'is-invalid': !EmployeeForm.valid }"
      formControlName="birth"
      bsDatepicker
-     [bsConfig] ="{ dateInputFormat : 'DD/MM/YYYY'}">
+     [bsConfig] ="{ dateInputFormat : 'DD/MM/YYYY'}" placeholder="Digite uma data nascimento">
     <div class="div invalid-feedback">
       O campo data de nacimento é obrigatório.
     </div>
@@ -33,9 +34,9 @@
   <div class="form-group">
     <label for="formGroupExampleInput" class="form-label">Telefone</label>
     <input type="text" name="phone" class="form-control is-invalid"
-    [ngClass]="{'is-invalid': !EmployeeForm.valid }" formControlName='phone'>
+    [ngClass]="{'is-invalid': !EmployeeForm.valid }" formControlName='phone' placeholder="Digite um telefone">
     <div class="div invalid-feedback">
-      O campo telefone é obrigatório.
+      O campo telefone é obrigatório. Ex: (00)0 00000000
     </div>
   </div>
   <div class="form-group">

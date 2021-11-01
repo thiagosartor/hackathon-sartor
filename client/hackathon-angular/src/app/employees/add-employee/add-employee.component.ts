@@ -24,9 +24,9 @@ export class AddEmployeeComponent implements OnInit {
   createForm(){
     this.EmployeeForm = this.fb.group({
       name:['', Validators.required],
-      cpf: ['', Validators.required],
+      cpf: ['', Validators.maxLength(14)],
       birth: ['', Validators.required],
-      phone: ['', Validators.required]
+      phone: ['', Validators.maxLength(15)]
     });
   }
 
