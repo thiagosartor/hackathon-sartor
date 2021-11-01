@@ -1,12 +1,11 @@
 import { DatePipe } from '@angular/common';
-import { Constants } from './../../util/Constants';
 import { Employee } from './../Employee';
 import { Component, OnInit } from '@angular/core';
 import { EmployeeService } from 'src/app/employees/Employee.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { defineLocale } from 'ngx-bootstrap/chronos';
+import { defineLocale, enGbLocale } from 'ngx-bootstrap/chronos';
 import { ptBrLocale } from 'ngx-bootstrap/locale';
-import { BsLocaleService } from 'ngx-bootstrap/datepicker';
+import { BsDatepickerConfig, BsLocaleService } from 'ngx-bootstrap/datepicker';
 defineLocale('pt-br', ptBrLocale);
 
 @Component({
@@ -21,7 +20,7 @@ export class ListEmployeeComponent implements OnInit {
   public ModalTitle!: string;
   public AtivateAddEditEmployeeComp: boolean = false;
   public empSelect!: Employee
-  public EmployeeSelected: any;
+  public EmployeeSelected!: any;
   public resgisterForm!: FormGroup;
 
   constructor(
@@ -38,11 +37,15 @@ export class ListEmployeeComponent implements OnInit {
 
   createForm(){
     this.EmployeeForm = this.fb.group({
-      name:['', Validators.required],
-      cpf: ['', Validators.maxLength(14)],
+      name:['', [Validators.required,  Validators.maxLength(100), Validators.minLength(5)]],
+      cpf: ['',  [Validators.required, Validators.maxLength(14), Validators.minLength(11)]],
       birth: ['', Validators.required],
-      phone: ['', Validators.maxLength(15)]
+      phone: ['',  [Validators.required, Validators.maxLength(15), Validators.minLength(10)]]
     });
+  }
+
+  get registerFormControl() {
+    return this.EmployeeForm.controls;
   }
 
   updateEmployee() {
@@ -51,7 +54,7 @@ export class ListEmployeeComponent implements OnInit {
           id: this.EmployeeSelected.id,
           cpf:this.EmployeeForm.value.cpf,
           name: this.EmployeeForm.value.name,
-          birth: (new Date(this.EmployeeForm.value.birth)),
+          birth: this.EmployeeForm.value.birth,
           phone: this.EmployeeForm.value.phone
          };
         this.service.updateEmployee(this.empSelect)
@@ -83,8 +86,22 @@ export class ListEmployeeComponent implements OnInit {
   }
 
   employeeSelect(employee:Employee) {
-    this.EmployeeSelected = employee;
+
+    let dateString = employee.birth;
+
+    this.EmployeeSelected = {
+      id: employee.id,
+      cpf:employee.cpf,
+      name: employee.name,
+      birth: employee.birth,
+      phone: employee.phone
+     };
+
     this.EmployeeForm.patchValue(employee);
+  }
+
+  format<Date>(d :Date) {
+
   }
 
   back() {

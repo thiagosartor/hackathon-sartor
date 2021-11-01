@@ -9,36 +9,68 @@
     <form [formGroup]="EmployeeForm" (submit)="updateEmployee()">
       <div class="form-group">
         <label for="formGroupExampleInput" class="form-label">Nome</label>
-        <input type="text" [ngClass]="{'is-invalid': !EmployeeForm.valid }" class="form-control" formControlName="name" placeholder="Digite um nome">
-        <div class="div invalid-feedback">
-          O campo nome é obrigatório.
+        <input type="text"  class="form-control" formControlName="name"
+          [ngClass]="{'is-invalid': registerFormControl.name.errors && registerFormControl.name.touched}"
+          placeholder="Digite um nome">
+        <div class="div invalid-feedback"
+          *ngIf="registerFormControl.name.hasError('required') && registerFormControl.name.touched">
+            O campo nome é obrigatório.
+        </div>
+        <div class="div invalid-feedback"
+          *ngIf="registerFormControl.name.hasError('minlength') && registerFormControl.name.touched">
+            No mínimo 5 caracteres.
+        </div>
+        <div class="div invalid-feedback"
+          *ngIf="registerFormControl.name.hasError('maxlength') && registerFormControl.name.touched">
+            No máximo 100 caracteres.
         </div>
       </div>
       <div class="form-group">
         <label for="formGroupExampleInput" class="form-label">CPF</label>
         <input type="text" formControlName="cpf" class="form-control"
-        [ngClass]="{'is-invalid': !EmployeeForm.valid }">
-        <div class="div invalid-feedback">
-          O campo CPF é obrigatório.
+          placeholder="Digite um CPF"
+          [ngClass]="{'is-invalid': registerFormControl.cpf.errors && registerFormControl.cpf.touched}">
+        <div class="div invalid-feedback"
+          *ngIf="registerFormControl.cpf.hasError('required') && registerFormControl.cpf.touched">
+            O campo CPF é obrigatório. Ex: 000.000.000-00
+        </div>
+        <div class="div invalid-feedback"
+          *ngIf="registerFormControl.cpf.hasError('minlength') && registerFormControl.cpf.touched">
+            No mínimo 11 caracteres. Ex: 000.000.000-00
+        </div>
+        <div class="div invalid-feedback"
+          *ngIf="registerFormControl.cpf.hasError('maxlength') && registerFormControl.cpf.touched">
+            No máximo 14 caracteres. Ex: 000.000.000-00
         </div>
       </div>
       <div class="form-group">
         <label for="formGroupExampleInput" class="form-label">Data de Nascimento</label>
-        <input  type="text" class="form-control" [ngClass]="{'is-invalid': !EmployeeForm.valid }"
-         formControlName="birth"
-         bsDatepicker
-         [bsConfig] ="{ dateInputFormat : 'DD/MM/YYYY'}">
-        <div class="div invalid-feedback">
-          O campo data de nacimento é obrigatório.
+        <input  type="text" class="form-control"
+          formControlName="birth"
+          bsDatepicker
+          [bsConfig] ="{ dateInputFormat : 'DD/MM/YYYY'}" placeholder="Digite uma data nascimento"
+          [ngClass]="{'is-invalid': registerFormControl.birth.errors && registerFormControl.birth.touched}">
+        <div class="div invalid-feedback"
+          *ngIf="registerFormControl.birth.hasError('required') && registerFormControl.birth.touched">
+            O campo data de nascimento é obrigatório.
         </div>
       </div>
-
       <div class="form-group">
         <label for="formGroupExampleInput" class="form-label">Telefone</label>
         <input type="text" name="phone" class="form-control is-invalid"
-        [ngClass]="{'is-invalid': !EmployeeForm.valid }" formControlName='phone'>
-        <div class="div invalid-feedback">
-          O campo telefone é obrigatório.
+         formControlName='phone' placeholder="Digite um telefone"
+         [ngClass]="{'is-invalid': registerFormControl.phone.errors && registerFormControl.phone.touched}">
+        <div class="div invalid-feedback"
+          *ngIf="registerFormControl.phone.hasError('required') && registerFormControl.phone.touched">
+            O campo telefone é obrigatório. Ex: (00)0 00000000
+        </div>
+        <div class="div invalid-feedback"
+          *ngIf="registerFormControl.phone.hasError('minlength') && registerFormControl.phone.touched">
+            No mínimo 10 caracteres. Ex: (00)0 00000000
+        </div>
+        <div class="div invalid-feedback"
+          *ngIf="registerFormControl.phone.hasError('maxlength') && registerFormControl.phone.touched">
+            No máximo 15 caracteres. Ex: (00)0 00000000
         </div>
       </div>
       <div class="form-group">
@@ -48,16 +80,15 @@
           width="20"
             height="20">
           </i-bs>
-            Salvar
-        </button>
+          Salvar</button>
 
-        <button class="btn btn-warning btn-primary-spacing" (click)="back()" >
-          <i-bs name="arrow-90deg-left"
-          width="20"
-            height="20">
-          </i-bs>
-            Voltar
-        </button>
+          <button class="btn btn-warning btn-primary-spacing" (click)="back()" >
+            <i-bs name="arrow-90deg-left"
+            width="20"
+              height="20">
+            </i-bs>
+              Voltar
+          </button>
       </div>
     </form>
 

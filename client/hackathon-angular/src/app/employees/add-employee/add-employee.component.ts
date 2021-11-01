@@ -11,23 +11,31 @@ import { Router } from '@angular/router';
 })
 export class AddEmployeeComponent implements OnInit {
   public EmployeeForm!: FormGroup;
-  private newEmp!: { id: number; cpf: any; name: any; birth: Date; phone: any; };
+  private newEmp!: Employee;
   private router!: Router;
 
-  constructor(private service: EmployeeService, private fb: FormBuilder, router: Router) {
+  constructor(
+    private service: EmployeeService,
+    private fb: FormBuilder,
+    router: Router) {
     this.createForm();
     this.router = router;
   }
+
   ngOnInit() {
   }
 
   createForm(){
     this.EmployeeForm = this.fb.group({
-      name:['', Validators.required],
-      cpf: ['', Validators.maxLength(14)],
+      name:['', [Validators.required,  Validators.maxLength(100), Validators.minLength(5)]],
+      cpf: ['',  [Validators.required, Validators.maxLength(14), Validators.minLength(11)]],
       birth: ['', Validators.required],
-      phone: ['', Validators.maxLength(15)]
+      phone: ['',  [Validators.required, Validators.maxLength(15), Validators.minLength(10)]]
     });
+  }
+
+  get registerFormControl() {
+    return this.EmployeeForm.controls;
   }
 
   addEmployee() {

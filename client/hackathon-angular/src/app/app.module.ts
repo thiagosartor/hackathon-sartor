@@ -12,7 +12,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { NgxBootstrapIconsModule, allIcons } from 'ngx-bootstrap-icons';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
-import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { BsDatepickerModule} from 'ngx-bootstrap/datepicker';
 
 import { TopmenuComponent } from './topmenu/topmenu.component';
 import { AddEmployeeComponent } from './employees/add-employee/add-employee.component';
@@ -53,4 +53,6 @@ import { HomeComponent } from './home/home.component';
     AppComponent
   ]
 })
-export class AppModule { }
+export class AppModule {
+
+}
