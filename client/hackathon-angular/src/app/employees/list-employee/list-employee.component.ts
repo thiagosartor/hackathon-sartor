@@ -1,7 +1,13 @@
+import { DatePipe } from '@angular/common';
+import { Constants } from './../../util/Constants';
 import { Employee } from './../Employee';
 import { Component, OnInit } from '@angular/core';
 import { EmployeeService } from 'src/app/employees/Employee.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { defineLocale } from 'ngx-bootstrap/chronos';
+import { ptBrLocale } from 'ngx-bootstrap/locale';
+import { BsLocaleService } from 'ngx-bootstrap/datepicker';
+defineLocale('pt-br', ptBrLocale);
 
 @Component({
   selector: 'app-list-employee',
@@ -18,9 +24,14 @@ export class ListEmployeeComponent implements OnInit {
   public empSelect!: Employee
   public EmployeeSelected: any;
   public Add = false;
+  public resgisterForm!: FormGroup;
 
-  constructor(private service: EmployeeService, private fb: FormBuilder) {
+  constructor(
+    private service: EmployeeService,
+    private fb: FormBuilder,
+    private localeService: BsLocaleService,) {
     this.createForm();
+    this.localeService.use('pt-br');
   }
 
   ngOnInit(): void {
@@ -29,10 +40,10 @@ export class ListEmployeeComponent implements OnInit {
 
   createForm(){
     this.EmployeeForm = this.fb.group({
-      name:['', Validators.required],
+      name: ['', Validators.required],
       cpf: ['', Validators.required],
       birth: ['', Validators.required],
-      phone: ['', Validators.required]
+      phone: ['', Validators.required],
     });
   }
 
@@ -79,6 +90,11 @@ export class ListEmployeeComponent implements OnInit {
     this.createForm();
 
     this.Add = true;
+  }
+
+  editEmployee(){
+
+
   }
 
   employeeDelete(id:number) {
