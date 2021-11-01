@@ -1,15 +1,15 @@
-import { Employee } from './../Employee';
+import { Employee } from '../Employee';
 import { Component, OnInit } from '@angular/core';
 import { EmployeeService } from 'src/app/employees/Employee.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-add-edit-employee',
-  templateUrl: './add-edit-employee.component.html',
-  styleUrls: ['./add-edit-employee.component.css']
+  selector: 'app-add-employee',
+  templateUrl: './add-employee.component.html',
+  styleUrls: ['./add-employee.component.css']
 })
-export class AddEditEmployeeComponent implements OnInit {
+export class AddEmployeeComponent implements OnInit {
   public EmployeeForm!: FormGroup;
   private newEmp!: { id: number; cpf: any; name: any; birth: Date; phone: any; };
   private router!: Router;
@@ -30,7 +30,7 @@ export class AddEditEmployeeComponent implements OnInit {
     });
   }
 
-  addOrUpdateEmployee() {
+  addEmployee() {
     if (this.EmployeeForm.valid) {
         this.newEmp = {
           id: 0,

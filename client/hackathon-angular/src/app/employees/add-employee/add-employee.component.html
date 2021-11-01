@@ -1,0 +1,50 @@
+<div class="mt-1">
+  <h2 class="title">Novo Funcionário</h2>
+    <br/>
+</div>
+
+<form [formGroup]="EmployeeForm" (submit)="addEmployee()">
+  <div class="form-group">
+    <label for="formGroupExampleInput" class="form-label">Nome</label>
+    <input type="text" [ngClass]="{'is-invalid': !EmployeeForm.valid }" class="form-control" formControlName="name" placeholder="Digite um nome">
+    <div class="div invalid-feedback">
+      O campo nome é obrigatório.
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="formGroupExampleInput" class="form-label">CPF</label>
+    <input type="text" formControlName="cpf" class="form-control"
+    [ngClass]="{'is-invalid': !EmployeeForm.valid }">
+    <div class="div invalid-feedback">
+      O campo CPF é obrigatório.
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="formGroupExampleInput" class="form-label">Data de Nascimento</label>
+    <input  type="text" class="form-control" [ngClass]="{'is-invalid': !EmployeeForm.valid }"
+     formControlName="birth"
+     bsDatepicker
+     [bsConfig] ="{ dateInputFormat : 'DD/MM/YYYY'}">
+    <div class="div invalid-feedback">
+      O campo data de nacimento é obrigatório.
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="formGroupExampleInput" class="form-label">Telefone</label>
+    <input type="text" name="phone" class="form-control is-invalid"
+    [ngClass]="{'is-invalid': !EmployeeForm.valid }" formControlName='phone'>
+    <div class="div invalid-feedback">
+      O campo telefone é obrigatório.
+    </div>
+  </div>
+  <div class="form-group">
+    <hr>
+    <button class="btn btn-success btn-primary-spacing" [disabled]="!EmployeeForm.valid" >
+      <i-bs name="save"
+      width="20"
+        height="20">
+      </i-bs>
+      Salvar</button>
+  </div>
+</form>

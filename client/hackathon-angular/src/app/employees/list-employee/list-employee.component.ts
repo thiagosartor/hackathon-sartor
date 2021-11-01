@@ -20,10 +20,8 @@ export class ListEmployeeComponent implements OnInit {
   public EmployeeList: any = [];
   public ModalTitle!: string;
   public AtivateAddEditEmployeeComp: boolean = false;
-  public newEmp!: Employee;
   public empSelect!: Employee
   public EmployeeSelected: any;
-  public Add = false;
   public resgisterForm!: FormGroup;
 
   constructor(
@@ -47,25 +45,8 @@ export class ListEmployeeComponent implements OnInit {
     });
   }
 
-  addOrUpdateEmployee() {
+  updateEmployee() {
     if (this.EmployeeForm.valid) {
-      if (this.Add) {
-        this.newEmp = {
-          id: 0,
-          cpf:this.EmployeeForm.value.cpf,
-          name: this.EmployeeForm.value.name,
-          birth: (new Date(this.EmployeeForm.value.birth)),
-          phone: this.EmployeeForm.value.phone
-         };
-        this.service.addEmployee(this.newEmp)
-        .subscribe(
-          () => {
-            this.refreshEmployeeList();
-          }, (error: any) => {
-            console.error(error);
-          }
-        );
-      } else {
         this.empSelect = {
           id: this.EmployeeSelected.id,
           cpf:this.EmployeeForm.value.cpf,
@@ -81,20 +62,11 @@ export class ListEmployeeComponent implements OnInit {
             console.error(error);
           }
         );
+
       }
-      this.Add = false;
-    }
-  }
-
-  newEmployee() {
-    this.createForm();
-
-    this.Add = true;
   }
 
   editEmployee(){
-
-
   }
 
   employeeDelete(id:number) {
@@ -124,5 +96,4 @@ export class ListEmployeeComponent implements OnInit {
       this.EmployeeList = data;
     });
   }
-
 }

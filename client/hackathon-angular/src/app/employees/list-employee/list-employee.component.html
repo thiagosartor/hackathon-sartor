@@ -2,17 +2,17 @@
   <div class="col-sm-6" *ngIf="EmployeeSelected">
     <div class="row">
       <div class="mr-auto">
-        <h2 class="title">Funcionário: {{EmployeeSelected.id}} </h2>
+        <h2 class="title">Editar Funcionário: {{EmployeeSelected.id}} </h2>
       </div>
       <div class="mt-1">
-        <button class="btn btn-sm btn-warning" (click)="back()">
+        <button class="btn btn-sm btn-warning" (click)="back()"> Voltar
           <i-bs name="arrow-90deg-left" width="20" height="20">
           </i-bs>
         </button>
       </div>
     </div>
 
-    <form [formGroup]="EmployeeForm" (submit)="addOrUpdateEmployee()">
+    <form [formGroup]="EmployeeForm" (submit)="updateEmployee()">
       <div class="form-group">
         <label for="formGroupExampleInput" class="form-label">Nome</label>
         <input type="text" [ngClass]="{'is-invalid': !EmployeeForm.valid }" class="form-control" formControlName="name" placeholder="Digite um nome">
@@ -55,12 +55,6 @@
             height="20">
           </i-bs>
           Salvar</button>
-        <button class="btn btn-primary btn-primary-spacing" (click)="newEmployee()" >
-          <i-bs name="plus-circle"
-          width="20"
-            height="20">
-          </i-bs>
-          Novo </button>
       </div>
     </form>
 
