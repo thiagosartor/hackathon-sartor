@@ -1,3 +1,25 @@
 @import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 @import '../node_modules/ngx-bootstrap/datepicker/bs-datepicker.css';
 
+.btn-primary-spacing
+{
+  margin-right: 5px;
+  margin-bottom: 5px !important;
+}
+
+.bg-light {
+  background-color: #0d69c5!important;
+}
+
+.navbar-light .navbar-brand {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.navbar-light .navbar-nav .nav-link {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.navbar-light .navbar-nav .active>.nav-link, .navbar-light .navbar-nav .nav-link.active, .navbar-light .navbar-nav .nav-link.show, .navbar-light .navbar-nav .show>.nav-link {
+  color: rgba(255, 255, 255, 0.9);
+}
+

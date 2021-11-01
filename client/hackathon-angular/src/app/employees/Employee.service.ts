@@ -10,11 +10,13 @@ import { environment } from 'src/environments/environment';
 })
 export class EmployeeService {
 
-  readonly APIUrl = "https://localhost:44388/Employee"
+  /*readonly APIUrl = "https://sartor-api.azurewebsites.net/Employee";*/
+  readonly APIUrl = "https://localhost:44388/Employee";
+
   constructor(private http:HttpClient) { }
 
   httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+    headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' })
   }
 
   getEmployeeList():Observable<any[]>{
