@@ -1,0 +1,13 @@
+<h1 class="title">Bem vindo(a): {{userName}}</h1>
+
+<div *ngIf="needsLogin" class="alert alert-warning">
+  You have been redirected to this page because you don't have the necessary
+  rights for the reqeusted action. Login with a respective user account!
+</div>
+
+<button (click)="login()" class="btn btn-default">Entrar</button>
+<button (click)="logout()" class="btn btn-default">Sair</button>
+
+
+
+

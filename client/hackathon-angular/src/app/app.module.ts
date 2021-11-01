@@ -15,10 +15,12 @@ import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 
 import { TopmenuComponent } from './topmenu/topmenu.component';
-import { AddEditEmployeeComponent } from './employees/add-edit-employee/add-edit-employee.component';
+import { AddEmployeeComponent } from './employees/add-employee/add-employee.component';
 import { ListEmployeeComponent } from './employees/list-employee/list-employee.component';
 import { EmployeesComponent } from './employees/employees.component';
 import { EmployeeService } from './employees/Employee.service';
+import { SidebarComponent } from './sidebar/sidebar.component';
+import { HomeComponent } from './home/home.component';
 
 
 @NgModule({
@@ -26,9 +28,11 @@ import { EmployeeService } from './employees/Employee.service';
     AppComponent,
     EmployeesComponent,
     ListEmployeeComponent,
-    AddEditEmployeeComponent,
+    AddEmployeeComponent,
     TopmenuComponent,
-    DateTimeFormatPipePipe
+    DateTimeFormatPipePipe,
+    SidebarComponent,
+    HomeComponent
    ],
   imports: [
     BrowserModule,
