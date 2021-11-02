@@ -1,0 +1,15 @@
+{
+  "dependencies": {
+    "mssql1": {
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/sartor-server/databases/HackathonDB",
+      "type": "mssql.azure",
+      "connectionId": "HackathonDB",
+      "secretStore": "AzureAppSettings"
+    },
+    "apis1": {
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.ApiManagement/service/HackthonAPI/apis/HackthonAPI",
+      "type": "apis.azure",
+      "apiEndpoint": "https://hackthonapi.azure-api.net/"
+    }
+  }
+}
