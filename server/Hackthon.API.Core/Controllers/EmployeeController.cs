@@ -1,8 +1,11 @@
-﻿using Hackthon.Domain;
+﻿using AutoMapper;
+using Hackthon.API.Core.DTOS;
+using Hackthon.Domain;
 using Hackthon.SQLServer;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Hackthon.API.Core.Controllers
 {
@@ -13,16 +16,23 @@ namespace Hackthon.API.Core.Controllers
         private ILogger<EmployeeController> _logger;
         public EmployeeDAO _employeeDAO;
 
-        public EmployeeController(ILogger<EmployeeController> logger)
+        public IMapper _mapper;
+
+        public EmployeeController(ILogger<EmployeeController> logger, IMapper mapper)
         {
+            _mapper = mapper;
             _logger = logger;
             _employeeDAO = new EmployeeDAO();
         }
 
         [HttpGet]
-        public IEnumerable<Employee> Get()
+        public async Task<IActionResult> Get()
         {
-            return _employeeDAO.GetAll().ToArray();
+            var employees = _employeeDAO.GetAll().ToArray();
+
+            var results = _mapper.Map<IEnumerable<EmployeeDTO>>(employees);
+
+            return Ok(results);
         }
 
         [HttpPost]

@@ -48,8 +48,10 @@
         <input  type="text" class="form-control"
           formControlName="birth"
           bsDatepicker
+          value="{{dateEmployee | DateTimeFormatPipe}}"
+          [(ngModel)]="dateEmployee"
           [bsConfig] ="{ dateInputFormat : 'DD/MM/YYYY'}" placeholder="Digite uma data nascimento"
-          [ngClass]="{'is-invalid': registerFormControl.birth.errors && registerFormControl.birth.touched}">
+          [ngClass]="{'is-invalid': registerFormControl.birth.errors && registerFormControl.birth.touched}"/>
         <div class="div invalid-feedback"
           *ngIf="registerFormControl.birth.hasError('required') && registerFormControl.birth.touched">
             O campo data de nascimento é obrigatório.
@@ -124,7 +126,7 @@
         <td scope="row">{{dataItem.id}}</td>
         <td>{{dataItem.name}}</td>
         <td [hidden]="EmployeeSelected">{{dataItem.cpf}}</td>
-        <td [hidden]="EmployeeSelected">{{dataItem.birth | DateTimeFormatPipe}}</td>
+        <td [hidden]="EmployeeSelected">{{dataItem.birth}}</td>
         <td [hidden]="EmployeeSelected">{{dataItem.phone}}</td>
         <td>
           <div class="btn-group">

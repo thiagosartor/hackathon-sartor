@@ -3,9 +3,9 @@ import { Employee } from './../Employee';
 import { Component, OnInit } from '@angular/core';
 import { EmployeeService } from 'src/app/employees/Employee.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { defineLocale, enGbLocale } from 'ngx-bootstrap/chronos';
+import { defineLocale } from 'ngx-bootstrap/chronos';
 import { ptBrLocale } from 'ngx-bootstrap/locale';
-import { BsDatepickerConfig, BsLocaleService } from 'ngx-bootstrap/datepicker';
+import { BsLocaleService } from 'ngx-bootstrap/datepicker';
 defineLocale('pt-br', ptBrLocale);
 
 @Component({
@@ -22,11 +22,12 @@ export class ListEmployeeComponent implements OnInit {
   public empSelect!: Employee
   public EmployeeSelected!: any;
   public resgisterForm!: FormGroup;
+  dateEmployee: Date | undefined;
 
   constructor(
     private service: EmployeeService,
     private fb: FormBuilder,
-    private localeService: BsLocaleService,) {
+    private localeService: BsLocaleService) {
     this.createForm();
     this.localeService.use('pt-br');
   }
@@ -65,11 +66,7 @@ export class ListEmployeeComponent implements OnInit {
             console.error(error);
           }
         );
-
       }
-  }
-
-  editEmployee(){
   }
 
   employeeDelete(id:number) {
@@ -86,22 +83,16 @@ export class ListEmployeeComponent implements OnInit {
   }
 
   employeeSelect(employee:Employee) {
-
-    let dateString = employee.birth;
-
+   this.dateEmployee = employee.birth;
     this.EmployeeSelected = {
       id: employee.id,
       cpf:employee.cpf,
       name: employee.name,
-      birth: employee.birth,
+      birth: this.dateEmployee,
       phone: employee.phone
      };
 
     this.EmployeeForm.patchValue(employee);
-  }
-
-  format<Date>(d :Date) {
-
   }
 
   back() {
